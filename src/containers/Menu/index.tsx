@@ -1,12 +1,13 @@
 import Filtro from '../../components/Filtro'
-import { Aside, Filtros } from './styles'
+import { Aside, Busca, Filtros } from './styles'
 
 const Menu = () => (
   <Aside>
     <div>
-      <input type="text" placeholder="Buscar" />
+      <Busca type="text" placeholder="Buscar" />
       <Filtros>
-        <Filtro legenda="espero que nao fique assim" contador={10} />
+        <Filtro legenda="espero" contador={10} />
+        <Filtro legenda="espero" contador={10} />
       </Filtros>
     </div>
   </Aside>

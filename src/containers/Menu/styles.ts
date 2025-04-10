@@ -8,9 +8,9 @@ export const Aside = styled.aside`
 
 export const Filtros = styled.div`
   display: grid;
-  grid-template- columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-gap: 8px;
-  margin-top: 16px
+  margin-top: 16px;
 `
 export const Busca = styled.input`
   padding: 8px;

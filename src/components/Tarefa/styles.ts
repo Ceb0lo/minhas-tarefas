@@ -50,6 +50,7 @@ export const Botao = styled.button`
   padding: 8px 12px;
   border: none;
   cursor: ponter;
+  color: #fff;
   background-color: #2f3640;
   border-radius: 8px;
   margin-right: 8px;
