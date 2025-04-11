@@ -6,8 +6,12 @@ const Menu = () => (
     <div>
       <Busca type="text" placeholder="Buscar" />
       <Filtros>
-        <Filtro legenda="espero" contador={10} />
-        <Filtro legenda="espero" contador={10} />
+        <Filtro legenda="pendente" contador={10} />
+        <Filtro legenda="concluida" contador={10} />
+        <Filtro legenda="urgente" contador={10} />
+        <Filtro legenda="importante" contador={10} />
+        <Filtro legenda="normal" contador={10} />
+        <Filtro legenda="todas" contador={10} />
       </Filtros>
     </div>
   </Aside>
