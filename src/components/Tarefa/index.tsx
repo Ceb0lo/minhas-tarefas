@@ -1,19 +1,11 @@
 import { useState } from 'react'
-import {
-  BarraInferior,
-  Botao,
-  BotaoRemover,
-  BotaoSalvar,
-  Card,
-  Discricao,
-  Tag,
-  Titulo
-} from './styles'
+import * as S from './styles'
+import * as enums from '../../utils/enums/tarefa'
 
 type Props = {
   titulo: string
-  categoria: string
-  status: string
+  categoria: enums.Categoria
+  status: enums.Status
   descricao: string
 }
 
@@ -21,27 +13,31 @@ const Tarefa = ({ descricao, categoria, status, titulo }: Props) => {
   const [estaEditando, setEstaEditando] = useState(false)
 
   return (
-    <Card>
-      <Titulo>{titulo}</Titulo>
-      <Tag categoria={categoria}>{categoria}</Tag>
-      <Tag status={status}>{status}</Tag>
-      <Discricao value={descricao} />
-      <BarraInferior>
+    <S.Card>
+      <S.Titulo>{titulo}</S.Titulo>
+      <S.Tag parametro="categoria" categoria={categoria}>
+        {categoria}
+      </S.Tag>
+      <S.Tag parametro="status" status={status}>
+        {status}
+      </S.Tag>
+      <S.Discricao value={descricao} />
+      <S.BarraInferior>
         {estaEditando ? (
           <>
-            <BotaoSalvar>Salvar</BotaoSalvar>
-            <BotaoRemover onClick={() => setEstaEditando(false)}>
+            <S.BotaoSalvar>Salvar</S.BotaoSalvar>
+            <S.BotaoRemover onClick={() => setEstaEditando(false)}>
               Cancelar
-            </BotaoRemover>
+            </S.BotaoRemover>
           </>
         ) : (
           <>
-            <Botao onClick={() => setEstaEditando(true)}>Edidar</Botao>
-            <BotaoRemover>Remover</BotaoRemover>
+            <S.Botao onClick={() => setEstaEditando(true)}>Edidar</S.Botao>
+            <S.BotaoRemover>Remover</S.BotaoRemover>
           </>
         )}
-      </BarraInferior>
-    </Card>
+      </S.BarraInferior>
+    </S.Card>
   )
 }
 

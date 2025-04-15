@@ -1,18 +1,19 @@
 import Tarefa from '../../components/Tarefa'
 import { Container } from './styles'
+import * as enums from '../../utils/enums/tarefa'
 
 const taref = [
   {
     titulo: 'boata um titulo',
-    categoria: 'Pra min esses dois era a msm coisa',
-    status: 'Pra min esses dois era a msm coisa',
+    categoria: enums.Categoria.IMPORTANTE,
+    status: enums.Status.PENDENTE,
     descricao: 'Imagina um texto gigante'
   }
 ]
 
 const Lista = () => (
   <Container>
-    <p>X tarefas marcardas como: &quoo;categoria&ldquo; e &quoo;termo&ldquo;</p>
+    <p>X tarefas marcardas como: &quot;categoria&ldquo; e &quot;termo&ldquo;</p>
     <ul>
       {taref.map((t) => (
         <li key={t.titulo}>

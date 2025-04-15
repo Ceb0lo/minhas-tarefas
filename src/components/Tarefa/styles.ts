@@ -1,18 +1,20 @@
 import styled from 'styled-components'
 import variaveis from '../../styles/variaveis'
+import * as enums from '../../utils/enums/tarefa'
 
 type TegProps = {
-  categoria?: string
-  status?: string
+  categoria?: enums.Categoria
+  status?: enums.Status
+  parametro: 'status' | 'categoria'
 }
 
 function retornaCorDeFundo(props: TegProps): string {
-  if ('status' in props) {
-    if (props.status == 'pendente') return variaveis.amareloV
-    if (props.status == 'concluida') return variaveis.verde
-  } else if ('categoria' in props) {
-    if (props.categoria == 'urgente') return variaveis.vermelho
-    if (props.categoria == 'importante') return variaveis.amareloL
+  if (props.parametro == 'categoria') {
+    if (props.categoria == enums.Categoria.URGENTE) return variaveis.vermelho
+    if (props.categoria == enums.Categoria.IMPORTANTE) return variaveis.amareloL
+  } else {
+    if (props.status == enums.Status.PENDENTE) return variaveis.amareloV
+    if (props.status == enums.Status.CONCLUIDA) return variaveis.verde
   }
   return '#ccc'
 }
