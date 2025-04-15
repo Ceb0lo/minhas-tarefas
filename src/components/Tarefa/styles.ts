@@ -30,7 +30,7 @@ export const Card = styled.div`
 export const Titulo = styled.h3`
   font-weidht: bold;
   font-size: 18px;
-  margin-bottom: 16px:
+  margin-bottom: 16px;
 `
 
 export const Tag = styled.span<TegProps>`
