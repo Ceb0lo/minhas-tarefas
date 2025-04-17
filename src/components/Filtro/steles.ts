@@ -1,15 +1,16 @@
 import styled from 'styled-components'
-import { Props } from '.'
 
-//PropsSLC = Props sem contator e legenda
-type PropsSLC = Omit<Props, 'contador' | 'legenda'>
+type Props = {
+  ativo: boolean
+}
 
-export const Card = styled.div<PropsSLC>`
+export const Card = styled.div<Props>`
   padding: 8px;
   border: 1px solid ${(props) => (props.ativo ? '#1e90ff' : '#a1a1a1')};
   backgranund-color: ${(props) => (props.ativo ? '#fff' : '#fcfcfc')};
   color: ${(props) => (props.ativo ? '#1e90ff' : '#5e5e5e')};
   border-radius: 8px;
+  cursor: pointer;
 `
 
 export const Contador = styled.span`

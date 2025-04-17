@@ -1,19 +1,54 @@
+import { useDispatch, useSelector } from 'react-redux'
 import Filtro from '../../components/Filtro'
 import { Aside, Busca, Filtros } from './styles'
+import { RootReducer } from '../../store'
+import { alteraTermo } from '../../store/reducers/filtro'
+import * as enums from '../../utils/enums/tarefa'
 
-const Menu = () => (
-  <Aside>
-    <div>
-      <Busca type="text" placeholder="Buscar" />
-      <Filtros>
-        <Filtro legenda="pendente" contador={10} />
-        <Filtro legenda="concluida" contador={10} />
-        <Filtro legenda="urgente" contador={10} />
-        <Filtro legenda="importante" contador={10} />
-        <Filtro legenda="normal" contador={10} />
-        <Filtro legenda="todas" contador={10} />
-      </Filtros>
-    </div>
-  </Aside>
-)
+const Menu = () => {
+  const dispatch = useDispatch()
+  const { termo } = useSelector((state: RootReducer) => state.filtro)
+
+  return (
+    <Aside>
+      <div>
+        <Busca
+          type="text"
+          placeholder="Buscar"
+          value={termo}
+          onChange={(evento) => dispatch(alteraTermo(evento.target.value))}
+        />
+        <Filtros>
+          <Filtro
+            valor={enums.Status.PENDENTE}
+            criterio="status"
+            legenda="pendente"
+          />
+          <Filtro
+            valor={enums.Status.CONCLUIDA}
+            criterio="status"
+            legenda="concluida"
+          />
+          <Filtro
+            valor={enums.Categoria.URGENTE}
+            criterio="categoria"
+            legenda="urgente"
+          />
+          <Filtro
+            valor={enums.Categoria.IMPORTANTE}
+            criterio="categoria"
+            legenda="importante"
+          />
+          <Filtro
+            valor={enums.Categoria.NROMAL}
+            criterio="categoria"
+            legenda="normal"
+          />
+          <Filtro criterio="todos" legenda="todos" />
+        </Filtros>
+      </div>
+    </Aside>
+  )
+}
+
 export default Menu
