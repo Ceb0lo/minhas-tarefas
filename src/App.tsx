@@ -1,16 +1,27 @@
 import { Provider } from 'react-redux'
-import Lista from './containers/Lista'
-import Menu from './containers/Menu'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+
 import EstiloGlobal, { Container } from './styles'
 import store from './store'
+import Home from './pages/Home'
+
+const rotas = createBrowserRouter([
+  {
+    path: '/',
+    element: <Home />
+  },
+  {
+    path: '/noveTarefa',
+    element: <h1>Em cosntrucao</h1>
+  }
+])
 
 function App() {
   return (
     <Provider store={store}>
       <EstiloGlobal />
       <Container>
-        <Menu />
-        <Lista />
+        <RouterProvider router={rotas} />
       </Container>
     </Provider>
   )
