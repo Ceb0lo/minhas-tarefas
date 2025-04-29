@@ -1,9 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux'
 import Filtro from '../../components/Filtro'
-import { Aside, Busca, Filtros } from './styles'
+import { Aside, Filtros } from './styles'
 import { RootReducer } from '../../store'
 import { alteraTermo } from '../../store/reducers/filtro'
 import * as enums from '../../utils/enums/tarefa'
+import { Campo } from '../../styles'
 
 const Menu = () => {
   const dispatch = useDispatch()
@@ -12,7 +13,7 @@ const Menu = () => {
   return (
     <Aside>
       <div>
-        <Busca
+        <Campo
           type="text"
           placeholder="Buscar"
           value={termo}

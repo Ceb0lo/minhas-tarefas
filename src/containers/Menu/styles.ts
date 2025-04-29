@@ -12,12 +12,3 @@ export const Filtros = styled.div`
   grid-gap: 8px;
   margin-top: 16px;
 `
-export const Busca = styled.input`
-  padding: 8px;
-  backeground-color: #fff;
-  border-radius: 8px;
-  font-weight: bold;
-  color: #666;
-  border-color: #666;
-  width: 100%;
-`
