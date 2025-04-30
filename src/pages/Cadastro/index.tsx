@@ -3,7 +3,7 @@ import Menu from '../../containers/Menu'
 
 const Cadastro = () => (
   <>
-    <Menu />
+    <Menu mostarFiltros={false} />
     <AddTarefa />
   </>
 )

@@ -20,10 +20,11 @@ export const Categorias = styled.div`
   }
 
   label {
-    margin-right: 6px;
+    margin-left: 6px;
   }
 `
 export const Opcao = styled.div`
   display: inline;
+  align-items: center;
   text-transform: capitalize;
 `

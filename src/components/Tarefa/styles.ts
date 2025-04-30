@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import variaveis from '../../styles/variaveis'
 import * as enums from '../../utils/enums/tarefa'
+import { Botao } from '../../styles'
 
 type TegProps = {
   categoria?: enums.Categoria
@@ -25,12 +26,18 @@ export const Card = styled.div`
   padding: 16px;
   margin-bottom: 32px;
   border-radius: 16px;
+
+  label {
+    display: flex;
+    aline-items: center;
+    margin-bottom: 16px;
+  }
 `
 
 export const Titulo = styled.h3`
   font-weidht: bold;
   font-size: 18px;
-  margin-bottom: 16px;
+  margin-left: 8px;
 `
 
 export const Tag = styled.span<TegProps>`
@@ -61,18 +68,6 @@ export const Discricao = styled.textarea`
 export const BarraInferior = styled.div`
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   padding-top: 16px;
-`
-export const Botao = styled.button`
-  font-wight: bold;
-  font-size: 12px;
-  color: #ff;
-  padding: 8px 12px;
-  border: none;
-  cursor: ponter;
-  color: #fff;
-  background-color: #2f3640;
-  border-radius: 8px;
-  margin-right: 8px;
 `
 
 export const BotaoRemover = styled(Botao)`
