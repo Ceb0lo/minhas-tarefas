@@ -1,23 +1,70 @@
+import { FormEvent, useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { BotaoSalvar, Campo, MainContainer, Titulo } from '../../styles'
-import { Categorias, Form } from './styles'
+import { Categorias, Form, Opcao } from './styles'
+import * as enums from '../../utils/enums/tarefa'
+import Tarefa from '../../models/Tarefa'
+import { cadastar } from '../../store/reducers/tarefas'
 
-const AddTarefa = () => (
-  <MainContainer>
-    <Titulo>Nova Tarefa</Titulo>
-    <Form>
-      <Campo type="text" placeholder="Titulo" />
-      <Campo as="textarea" placeholder="Descricao da tarefa" />
-      <Categorias>
-        <input name="categoria" type="radio" id="urgente" />
-        <label htmlFor="urgente">Urgente</label>
-        <input name="categoria" type="radio" id="importante" />
-        <label htmlFor="importante">Importante</label>
-        <input name="categoria" type="radio" id="normal" />
-        <label htmlFor="normal">Normal</label>
-      </Categorias>
-      <BotaoSalvar type="submit">Cadastrar</BotaoSalvar>
-    </Form>
-  </MainContainer>
-)
+const AddTarefa = () => {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const [descricao, setDescricao] = useState('')
+  const [titulo, setTitulo] = useState('')
+  const [categoria, setCategoria] = useState(enums.Categoria.NROMAL)
+
+  const cadastrarTarefa = (evento: FormEvent) => {
+    evento.preventDefault()
+    const tarefaParaAdd = new Tarefa(
+      titulo,
+      categoria,
+      enums.Status.PENDENTE,
+      descricao,
+      11
+    )
+
+    dispatch(cadastar(tarefaParaAdd))
+    navigate('/')
+  }
+
+  return (
+    <MainContainer>
+      <Titulo>Nova Tarefa</Titulo>
+      <Form onSubmit={cadastrarTarefa}>
+        <Campo
+          value={titulo}
+          onChange={(evento) => setTitulo(evento.target.value)}
+          type="text"
+          placeholder="Titulo"
+        />
+        <Campo
+          value={descricao}
+          onChange={(evento) => setDescricao(evento.target.value)}
+          as="textarea"
+          placeholder="Descricao da tarefa"
+        />
+        <Categorias>
+          {Object.values(enums.Categoria).map((categoria) => (
+            <Opcao key={categoria}>
+              <input
+                value={categoria}
+                onChange={(evento) =>
+                  setCategoria(evento.target.value as enums.Categoria)
+                }
+                name="categoria"
+                type="radio"
+                id={categoria}
+                defaultChecked={categoria == enums.Categoria.NROMAL}
+              />
+              <label htmlFor={categoria}>{categoria}</label>
+            </Opcao>
+          ))}
+        </Categorias>
+        <BotaoSalvar type="submit">Cadastrar</BotaoSalvar>
+      </Form>
+    </MainContainer>
+  )
+}
 
 export default AddTarefa
